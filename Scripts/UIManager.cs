@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI bluePoints;
     [SerializeField] private TextMeshProUGUI redPoints;
-    [SerializeField] private GameObject finish;
+    [SerializeField] private GameObject finish, _pause;
     [SerializeField] private TextMeshProUGUI winner;
     private int blue;
     private int red;
@@ -40,6 +40,11 @@ public class UIManager : MonoBehaviour
         {
             Invoke("Reload", 2f);
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Pause();
+        }
     }
 
     public void RedPoint()
@@ -67,4 +72,22 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene("Game");
     }
+    void Pause()
+    {
+        Time.timeScale = 0f;
+        _pause.SetActive(true);
+    }
+
+    public void Resume()
+    {
+        _pause.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+    public void Menu()
+    {
+        SceneManager.LoadScene("Menu");
+        Time.timeScale = 1f;
+    }
+
 }
