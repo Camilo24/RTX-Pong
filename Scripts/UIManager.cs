@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI redPoints;
     [SerializeField] private GameObject finish, _pause;
     [SerializeField] private TextMeshProUGUI winner;
+    [SerializeField] private AudioSource point;
     private int blue;
     private int red;
 
@@ -49,11 +50,13 @@ public class UIManager : MonoBehaviour
 
     public void RedPoint()
     {
+        point.Play();
         red++;
     }
 
     public void BluePoint()
     {
+        point.Play();
         blue++;
     }
 

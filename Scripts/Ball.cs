@@ -11,6 +11,7 @@ public class Ball : MonoBehaviour
     [SerializeField] private ParticleSystem blue;
     [SerializeField] private ParticleSystem red;
     [SerializeField] private UIManager manager;
+    [SerializeField] private AudioSource hit;
 
     void Start()
     {
@@ -45,6 +46,11 @@ public class Ball : MonoBehaviour
             red.Play();
             Invoke("PauseExplosion", 0.5f);
         }
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            hit.Play();
+        }
+
 
     }
 
